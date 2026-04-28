@@ -19,9 +19,22 @@ const MeetingSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+  password: {
+    type: String,
+    default: ''
+  },
   startTime: {
     type: Date,
     required: true
+  },
+  status: {
+    type: String,
+    enum: ['active', 'ended'],
+    default: 'active'
+  },
+  isScheduled: {
+    type: Boolean,
+    default: false
   },
   createdAt: {
     type: Date,

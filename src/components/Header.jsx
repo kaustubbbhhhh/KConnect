@@ -1,6 +1,6 @@
 import { useAuth } from '../context/AuthContext';
-import { LogOut, User as UserIcon, Home, Settings as SettingsIcon } from 'lucide-react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { LogOut, User as UserIcon, Home, Settings as SettingsIcon, Video } from 'lucide-react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const { user, logout } = useAuth();
@@ -12,74 +12,74 @@ const Header = () => {
     navigate('/');
   };
 
-  const NavButton = ({ icon: Icon, label, path }) => (
-    <button 
-      onClick={() => navigate(path)}
-      style={{
-        background: location.pathname === path ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
-        border: 'none',
-        color: location.pathname === path ? '#60a5fa' : 'var(--text-primary)',
-        padding: '8px 16px',
-        borderRadius: '8px',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-        cursor: 'pointer',
-        fontWeight: 500,
-        transition: 'all 0.2s ease'
-      }}
-      onMouseOver={(e) => {
-        if(location.pathname !== path) e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
-      }}
-      onMouseOut={(e) => {
-        if(location.pathname !== path) e.currentTarget.style.background = 'transparent';
-      }}
-    >
-      <Icon size={18} /> {label}
-    </button>
-  );
+  const NavButton = ({ icon: Icon, label, path }) => {
+    const isActive = location.pathname === path;
+    return (
+      <button 
+        onClick={() => navigate(path)}
+        className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all duration-300 ${
+          isActive 
+            ? 'bg-white text-black shadow-lg shadow-white/10' 
+            : 'text-zinc-400 hover:text-white hover:bg-white/10'
+        }`}
+      >
+        <Icon size={18} className={isActive ? 'text-black' : 'text-zinc-400'} /> 
+        <span className="hidden sm:inline">{label}</span>
+      </button>
+    );
+  };
 
   return (
-    <header style={{ 
-      display: 'flex', 
-      justifyContent: 'space-between', 
-      alignItems: 'center', 
-      padding: '16px 32px',
-      borderBottom: '1px solid var(--card-border)',
-      background: 'rgba(0,0,0,0.2)',
-      backdropFilter: 'blur(10px)'
-    }}>
-      <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'white', display: 'flex', alignItems: 'center', gap: '8px' }}>
-        <div style={{ width: '32px', height: '32px', background: 'var(--primary-blue)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          K
-        </div>
-        Connect
-      </div>
-      
-      {user && (
-        <>
-          <nav style={{ display: 'flex', gap: '8px' }}>
-            <NavButton icon={Home} label="Dashboard" path="/dashboard" />
-            <NavButton icon={SettingsIcon} label="Settings" path="/settings" />
-          </nav>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              {user.profilePicture ? (
-                <img src={user.profilePicture} alt="Profile" style={{ width: '36px', height: '36px', borderRadius: '50%', objectFit: 'cover' }} />
-              ) : (
-                <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'var(--card-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <UserIcon size={20} />
-                </div>
-              )}
-              <span style={{ fontWeight: 500 }}>{user.username}</span>
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/50 backdrop-blur-xl">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
+          
+          <Link to={user ? "/dashboard" : "/"} className="flex items-center gap-3 hover:opacity-80 transition-opacity group">
+            <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform">
+              <Video size={24} className="text-black" />
             </div>
-            <button onClick={handleLogout} className="btn-secondary" style={{ padding: '8px' }} title="Logout">
-              <LogOut size={18} />
-            </button>
-          </div>
-        </>
-      )}
+            <h1 className="text-2xl font-extrabold tracking-tight text-white hidden sm:block">
+              KConnect
+            </h1>
+          </Link>
+        
+          {user ? (
+            <div className="flex items-center gap-4 sm:gap-6">
+              <nav className="flex gap-2">
+                <NavButton icon={Home} label="Dashboard" path="/dashboard" />
+                <NavButton icon={SettingsIcon} label="Settings" path="/settings" />
+              </nav>
+
+              <div className="w-px h-8 bg-white/10 hidden sm:block" />
+
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
+                  {user.profilePicture ? (
+                    <img src={user.profilePicture} alt="Profile" className="w-10 h-10 rounded-full object-cover border-2 border-white/20 shadow-lg" />
+                  ) : (
+                    <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border-2 border-white/20 shadow-lg">
+                      <UserIcon size={20} className="text-zinc-400" />
+                    </div>
+                  )}
+                  <span className="font-bold text-sm hidden md:block">{user.username}</span>
+                </div>
+                <button 
+                  onClick={handleLogout} 
+                  className="p-2.5 text-zinc-400 hover:text-red-400 hover:bg-red-400/10 rounded-xl transition-colors" 
+                  title="Logout"
+                >
+                  <LogOut size={20} />
+                </button>
+              </div>
+            </div>
+          ) : (
+            <Link to="/login" className="bg-white text-black px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-zinc-200 transition-colors shadow-lg">
+              Sign In
+            </Link>
+          )}
+
+        </div>
+      </div>
     </header>
   );
 };
