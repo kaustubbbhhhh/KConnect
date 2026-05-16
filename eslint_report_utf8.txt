@@ -1,0 +1,202 @@
+﻿
+> kconnect@0.0.0 lint
+> eslint .
+
+
+E:\Project\Kconnect_\KConnect\backend\middleware\auth.js
+   1:13  error  'require' is not defined  no-undef
+   2:14  error  'require' is not defined  no-undef
+  16:41  error  'process' is not defined  no-undef
+  40:1   error  'module' is not defined   no-undef
+
+E:\Project\Kconnect_\KConnect\backend\models\Meeting.js
+   1:18  error  'require' is not defined  no-undef
+  45:1   error  'module' is not defined   no-undef
+
+E:\Project\Kconnect_\KConnect\backend\models\User.js
+   1:18  error  'require' is not defined  no-undef
+   2:16  error  'require' is not defined  no-undef
+  81:1   error  'module' is not defined   no-undef
+
+E:\Project\Kconnect_\KConnect\backend\routes\auth.js
+    1:17  error  'require' is not defined  no-undef
+    3:13  error  'require' is not defined  no-undef
+    4:14  error  'require' is not defined  no-undef
+    5:26  error  'require' is not defined  no-undef
+    6:20  error  'require' is not defined  no-undef
+    8:33  error  'process' is not defined  no-undef
+   14:15  error  'process' is not defined  no-undef
+   15:15  error  'process' is not defined  no-undef
+   24:29  error  'process' is not defined  no-undef
+   58:38  error  'process' is not defined  no-undef
+  194:23  error  'process' is not defined  no-undef
+  243:1   error  'module' is not defined   no-undef
+
+E:\Project\Kconnect_\KConnect\backend\routes\meetings.js
+    1:17  error  'require' is not defined  no-undef
+    3:17  error  'require' is not defined  no-undef
+    4:21  error  'require' is not defined  no-undef
+  182:1   error  'module' is not defined   no-undef
+
+E:\Project\Kconnect_\KConnect\backend\routes\users.js
+   1:17  error  'require' is not defined                                                                no-undef
+   3:14  error  'require' is not defined                                                                no-undef
+   4:21  error  'require' is not defined                                                                no-undef
+   5:7   error  'bcrypt' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+   5:16  error  'require' is not defined                                                                no-undef
+  18:14  error  'error' is defined but never used                                                       no-unused-vars
+  78:1   error  'module' is not defined                                                                 no-undef
+
+E:\Project\Kconnect_\KConnect\backend\server.js
+    1:17  error  'require' is not defined    no-undef
+    2:18  error  'require' is not defined    no-undef
+    3:14  error  'require' is not defined    no-undef
+    4:16  error  'require' is not defined    no-undef
+    5:14  error  'require' is not defined    no-undef
+    6:14  error  'require' is not defined    no-undef
+    7:20  error  'require' is not defined    no-undef
+   17:21  error  'process' is not defined    no-undef
+   54:28  error  'process' is not defined    no-undef
+   70:22  error  'require' is not defined    no-undef
+   71:23  error  'require' is not defined    no-undef
+   72:26  error  'require' is not defined    no-undef
+   75:5   error  'process' is not defined    no-undef
+   77:36  error  '__dirname' is not defined  no-undef
+   80:31  error  '__dirname' is not defined  no-undef
+   92:24  error  'process' is not defined    no-undef
+   93:24  error  'process' is not defined    no-undef
+  390:14  error  'process' is not defined    no-undef
+
+E:\Project\Kconnect_\KConnect\src\components\Header.jsx
+  15:30  error  'Icon' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             no-unused-vars
+  49:18  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  47 |             <div className="flex items-center gap-4 sm:gap-6">
+  48 |               <nav className="flex gap-2">
+> 49 |                 <NavButton icon={Home} label="Dashboard" path="/dashboard" />
+     |                  ^^^^^^^^^ This component is created during render
+  50 |                 <NavButton icon={SettingsIcon} label="Settings" path="/settings" />
+  51 |               </nav>
+  52 |
+
+  13 |   };
+  14 |
+> 15 |   const NavButton = ({ icon: Icon, label, path }) => {
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 16 |     const isActive = location.pathname === path;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 17 |     return (
+     ΓÇª
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 29 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 30 |   };
+     | ^^^^ The component is created during render here
+  31 |
+  32 |   return (
+  33 |     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/50 backdrop-blur-xl">          react-hooks/static-components
+  50:18  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  48 |               <nav className="flex gap-2">
+  49 |                 <NavButton icon={Home} label="Dashboard" path="/dashboard" />
+> 50 |                 <NavButton icon={SettingsIcon} label="Settings" path="/settings" />
+     |                  ^^^^^^^^^ This component is created during render
+  51 |               </nav>
+  52 |
+  53 |               <div className="w-px h-8 bg-white/10 hidden sm:block" />
+
+  13 |   };
+  14 |
+> 15 |   const NavButton = ({ icon: Icon, label, path }) => {
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 16 |     const isActive = location.pathname === path;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 17 |     return (
+     ΓÇª
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 29 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 30 |   };
+     | ^^^^ The component is created during render here
+  31 |
+  32 |   return (
+  33 |     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/50 backdrop-blur-xl">  react-hooks/static-components
+
+E:\Project\Kconnect_\KConnect\src\context\AuthContext.jsx
+  176:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+E:\Project\Kconnect_\KConnect\src\pages\Dashboard.jsx
+   43:6   warning  React Hook useEffect has a missing dependency: 'fetchMeetings'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+   57:14  error    'err' is defined but never used                                                                                   no-unused-vars
+  102:13  error    'logout' is not defined                                                                                           no-undef
+  107:14  error    'err' is defined but never used                                                                                   no-unused-vars
+  145:14  error    'err' is defined but never used                                                                                   no-unused-vars
+  167:14  error    'err' is defined but never used                                                                                   no-unused-vars
+  191:14  error    'err' is defined but never used                                                                                   no-unused-vars
+  401:39  error    'e' is defined but never used                                                                                     no-unused-vars
+
+E:\Project\Kconnect_\KConnect\src\pages\Room.jsx
+    14:12  error    'stream' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 no-unused-vars
+    20:12  error    'iceServers' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             no-unused-vars
+    45:12  error    'meetingDetails' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         no-unused-vars
+    78:13  error    Error: Cannot access variable before it is declared
+
+`handleDirectJoin` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  76 |
+  77 |         if (savedMeetingId === roomID) {
+> 78 |             handleDirectJoin(savedPassword);
+     |             ^^^^^^^^^^^^^^^^ `handleDirectJoin` accessed before it is declared
+  79 |         } else {
+  80 |             // Try joining without password first
+  81 |             handleDirectJoin('');
+
+   83 |     }, [roomID, user]);
+   84 |
+>  85 |     const handleDirectJoin = async (passwordToTry) => {
+      |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  86 |         try {
+      | ^^^^^^^^^^^^^
+>  87 |             const res = await fetch(`${import.meta.env.VITE_BACKEND_URL || ''}/api/meetings/join`, {
+      ΓÇª
+      | ^^^^^^^^^^^^^
+> 118 |         }
+      | ^^^^^^^^^^^^^
+> 119 |     };
+      | ^^^^^^^ `handleDirectJoin` is declared here
+  120 |
+  121 |     useEffect(() => {
+  122 |         if (!isAuthorized) return;  react-hooks/immutability
+    83:8   warning  React Hook useEffect has a missing dependency: 'handleDirectJoin'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    react-hooks/exhaustive-deps
+   116:18  error    'err' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        no-unused-vars
+   219:82  error    'e' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          no-unused-vars
+   219:85  error    Empty block statement                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  no-empty
+   291:75  error    'e' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          no-unused-vars
+   291:78  error    Empty block statement                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  no-empty
+   337:93  error    'e' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          no-unused-vars
+   337:96  error    Empty block statement                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  no-empty
+   377:85  error    'e' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          no-unused-vars
+   377:88  error    Empty block statement                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  no-empty
+   386:8   warning  React Hook useEffect has missing dependencies: 'navigate', 'user?._id', 'user?.firstName', and 'user?.username'. Either include them or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    react-hooks/exhaustive-deps
+   447:18  error    'err' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        no-unused-vars
+   564:81  error    'e' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          no-unused-vars
+   564:84  error    Empty block statement                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  no-empty
+  1109:8   warning  React Hook useEffect has missing dependencies: 'position.x' and 'position.y'. Either include them or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       react-hooks/exhaustive-deps
+  1186:29  error    Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+  1184 |                 zIndex: 50,
+  1185 |                 touchAction: 'none',
+> 1186 |                 transition: dragState.current.isDragging ? 'none' : 'left 0.2s ease, top 0.2s ease',
+       |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  1187 |             }}
+  1188 |         >
+  1189 |             {/* Video-off overlay */}                                                                                                                                                                                                                                                                                                                                react-hooks/refs
+
+Γ£û 82 problems (78 errors, 4 warnings)
+

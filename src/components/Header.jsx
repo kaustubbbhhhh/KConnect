@@ -2,6 +2,25 @@ import { useAuth } from '../context/AuthContext';
 import { LogOut, User as UserIcon, Home, Settings as SettingsIcon, Video } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
+const NavButton = ({ icon: Icon, label, path }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isActive = location.pathname === path;
+  return (
+    <button 
+      onClick={() => navigate(path)}
+      className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all duration-300 ${
+        isActive 
+          ? 'bg-white text-black shadow-lg shadow-white/10' 
+          : 'text-zinc-400 hover:text-white hover:bg-white/10'
+      }`}
+    >
+      <Icon size={18} className={isActive ? 'text-black' : 'text-zinc-400'} /> 
+      <span className="hidden sm:inline">{label}</span>
+    </button>
+  );
+};
+
 const Header = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -12,25 +31,10 @@ const Header = () => {
     navigate('/');
   };
 
-  const NavButton = ({ icon: Icon, label, path }) => {
-    const isActive = location.pathname === path;
-    return (
-      <button 
-        onClick={() => navigate(path)}
-        className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all duration-300 ${
-          isActive 
-            ? 'bg-white text-black shadow-lg shadow-white/10' 
-            : 'text-zinc-400 hover:text-white hover:bg-white/10'
-        }`}
-      >
-        <Icon size={18} className={isActive ? 'text-black' : 'text-zinc-400'} /> 
-        <span className="hidden sm:inline">{label}</span>
-      </button>
-    );
-  };
+  const isMeeting = location.pathname.startsWith('/room/');
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/50 backdrop-blur-xl">
+    <header className={`sticky top-0 z-50 w-full border-b border-white/10 bg-black/50 backdrop-blur-xl ${isMeeting ? 'hidden sm:block' : ''}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           
