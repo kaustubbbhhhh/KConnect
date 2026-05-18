@@ -4,6 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const http = require('http');
 const path = require('path');
+const fs = require('fs');
 const { Server } = require('socket.io');
 
 // Load env vars
@@ -71,18 +72,17 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/meetings', require('./routes/meetings'));
 
-// Serve frontend in production
-if (process.env.NODE_ENV === 'production') {
-  // Set static folder
-  app.use(express.static(path.join(__dirname, '../dist')));
-
+// Serve frontend if dist directory exists (local/single-deployment), otherwise act as pure API
+const distPath = path.join(__dirname, '../dist');
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
   app.get(/(.*)/, (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../dist', 'index.html'));
+    res.sendFile(path.resolve(distPath, 'index.html'));
   });
 } else {
-  // Basic route
+  // Basic route for API health check
   app.get('/', (req, res) => {
-      res.send('KConnect API Running');
+      res.send('KConnect API is running successfully!');
   });
 }
 
