@@ -26,8 +26,9 @@ const corsOptions = {
     const isLocalhost = origin.startsWith('http://localhost:');
     const isLocalIP = origin.startsWith('http://192.168.') || origin.startsWith('http://10.');
     const isCloudRun = origin.endsWith('.run.app');
+    const isVercel = origin.endsWith('.vercel.app');
     
-    if (isLocalhost || isLocalIP || isCloudRun || origin === frontendURL) {
+    if (isLocalhost || isLocalIP || isCloudRun || isVercel || origin === frontendURL) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
